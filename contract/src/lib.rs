@@ -16,7 +16,7 @@ gstd::metadata! {
         output: Vec<Message>,
 }
 
-#[derive(Debug, TypeInfo, Decode)]
+#[derive(Debug, TypeInfo, Encode, Decode)]
 pub enum Action {
     AddMessage(String),
 }
@@ -78,4 +78,30 @@ pub unsafe extern "C" fn meta_state() -> *mut [i32; 2] {
     let encoded = messages.encode();
 
     gstd::util::to_leak_ptr(encoded)
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::{Action, Message};
+    use gstd::{prelude::*};
+    use gtest::{Program, System};
+
+    #[test]
+    fn add_message() {
+        let system = System::new();
+        system.init_logger();
+
+        let program = Program::current(&system);
+
+        let res = program.send_bytes(42, "Init");
+        assert!(res.log().is_empty());
+
+        let res = program.send(42, Action::AddMessage("Hello".to_string()));
+        let message = Message {
+            autor: 42.into(),
+            text: "Hello".to_string(),
+            timestamp: 0,
+        };
+        assert!(res.contains(&(42, message.encode())));
+    }
 }
