@@ -25,10 +25,6 @@ rustup target add wasm32-unknown-unknown --toolchain nightly
 make init
 ```
 
-### ✍️ Edit the program
-
-Open [`src/lib.rs`](src/lib.rs) and address all `TODO`s there.
-
 ### 🏗️ Build
 
 ```shell
@@ -67,4 +63,4 @@ make
 
 ## License
 
-The source code is licensed under [GPL v3.0 license](LICENSE).
+The source code is licensed under [GPL v3.0 license](../LICENSE).
