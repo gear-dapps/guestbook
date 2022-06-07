@@ -25,20 +25,10 @@ To build
 npm install
 ```
 
-or
-
-```shell
-yarn
-```
-
-```shell
-yarn run build:types
-```
-
 To run:
 
 ```shell
-yarn run start
+npm run start
 ```
 
 # License
