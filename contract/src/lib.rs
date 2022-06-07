@@ -59,7 +59,7 @@ pub unsafe extern "C" fn handle() {
         Action::AddMessage(text) => {
             let message = Message {
                 autor: msg::source(),
-                text: text,
+                text,
                 timestamp: exec::block_height(),
             };
 
@@ -83,7 +83,7 @@ pub unsafe extern "C" fn meta_state() -> *mut [i32; 2] {
 #[cfg(test)]
 mod tests {
     use crate::{Action, Message};
-    use gstd::{prelude::*};
+    use gstd::prelude::*;
     use gtest::{Program, System};
 
     #[test]
