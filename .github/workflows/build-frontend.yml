@@ -15,7 +15,7 @@ jobs:
           node-version: 16.x
       - run: |
           npm install
-          npm run buid
+          npm run build
         env:
           REACT_APP_NODE_ADDRESS: 'wss://rpc-node.gear-tech.io:443'
           REACT_APP_CONTRACT_ADDRESS: '0xeb613238cbd1d82f33590d42b2d3bc62d02dd00fca8aa7dd514e03bd2cd4de70'
