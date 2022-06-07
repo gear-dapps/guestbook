@@ -32,17 +32,13 @@ jobs:
           components: clippy, rustfmt
           target: wasm32-unknown-unknown
 
-      - name: Check fmt
-        run: make fmt-check
-
-      - name: Run linter
-        run: make linter
-
-      - name: Build
-        run: make build
-
-      - name: Run tests
-        run: make test
+      - name: checks
+        run: |
+          make fmt-check
+          make linter
+          make build
+          make test
+        working-directory: ./contract
 
       - name: Upload artifacts
         if: github.event_name == 'push'
